@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HOME PAGE</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            margin: 0px;
+            padding: 0px;
+        }
+        .wrapper1{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+            background-image: linear-gradient(to bottom right, white, lightblue);
+        }
+        .logo{
+            font-size: 60px;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+        .menu{
+            display: inline-block;
+        }
+        .menu li{
+            margin-left: 360px;
+            display: inline-block;
+        }
+        .menu a{
+            cursor: pointer;
+            font-size: 24px;
+            font-weight: 550;
+            letter-spacing: 0.5px;
+
+        }
+        .menu a:hover{
+            color: blue;
+            transition: 1s;
+            border-bottom: 1px black solid;
+        }
+        .s{
+            color: blue;
+        }
+
+        .product_container{
+            display: flex;
+            flex-direction: column;
+        }
+        .wrapper2{
+            display: flex;
+            flex-direction: row;
+            column-gap: 100px;
+            padding: 20px 70px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="wrapper1">
+    <h1 class="logo" >PA<span class="s">S</span></h1>
+    <ul class="menu">
+        <li><a>PRODUCTS</a></li>
+        <li><a>CART</a></li>
+    </ul>
+</div>
+<div class="wrapper2">
+    <div th:each="product : ${productList}" class="product_container">
+        <a th:href="@{/view_more/__${product.getId()}__}">
+            <img th:src="'data:image/jpeg;base64,' + ${imageDecoder.decodeImage(product.getImage())}" alt="Product Image" style="width: 400px; height: 400px">
+            <h2 th:text="${product.getTitle()}"></h2>
+            <h2 th:text="${product.getPrice()}"></h2>
+        </a>
+
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-image: linear-gradient(to bottom right, white, lightblue);
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            text-align: center; /* Or align buttons how you prefer */
+        }
+
+        nav button {
+            margin: 0 10px; /* Space between buttons */
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #eee;
+            cursor: pointer;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        article {
+            margin: 10px;
+            text-align: center;
+            flex-basis: 23%; /* Key Change: Calculate width for 4 items */
+            box-sizing: border-box; /* Include padding and borders within width */
+        }
+
+        img {
+            border-radius: 5px;
+        }
+
+        a {
+            font-size: 25px;
+            letter-spacing: 2px;
+            margin: 10px;
+            text-align: center;
+            flex-basis: 23%; /* Key Change: Calculate width for 4 items */
+            box-sizing: border-box; /* Include padding and borders within width */
+        }
+        .wrapper1{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+            background-image: linear-gradient(to bottom right, white, lightblue);
+        }
+        .logo{
+            font-size: 60px;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+        .menu{
+            display: inline-block;
+        }
+        .menu li{
+            margin-left: 360px;
+            display: inline-block;
+        }
+        .menu a{
+            cursor: pointer;
+            font-size: 24px;
+            font-weight: 550;
+            letter-spacing: 0.5px;
+
+        }
+        .menu a:hover{
+            color: blue;
+            transition: 1s;
+            border-bottom: 1px black solid;
+        }
+        .s{
+            color: blue;
+        }
+        .wrapper1{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+            background-image: linear-gradient(to bottom right, white, lightblue);
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper1">
+    <h1 class="logo" >PA<span class="s">S</span></h1>
+    <ul class="menu">
+        <li><a th:href="@{/products}">PRODUCTS</a></li>
+        <li><a th:href="@{/cart}">CART</a></li>
+    </ul>
+</div>
+
+<br>
+<div>
+    <h1>Your Cart</h1>
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>----------</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="entry : ${productsList}">
+                <td th:text="${entry.key.getTitle()}"></td>
+                <td th:text="${entry.key.getDescription()}"></td>
+                <td th:text="${productsPrice.get(entry.key)}"></td>
+                <td th:text="${entry.value}"></td>
+                <td>
+                    <form th:action="@{/removeFromCart/__${entry.getKey().getId()}__}" method="post">
+                        <button type="submit">Remove</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br><br>
+        <div>
+            <span>The sum of all the products is: </span><span th:text="${BasicSum.sum(productsPrice)}"></span>
+        </div>
+        <br>
+        <form th:action="@{/createOrder}" method="post">
+            <button type="submit">Create Order</button>
+        </form>
+        <br>
+        <form th:action="@{/orders}" method="get">
+            <button type="submit">View Orders</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

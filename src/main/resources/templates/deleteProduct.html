@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Delete Product</h1>
+    <form id="fileUploadForm" action="/admin/deleteProduct" method="post">
+        <label for="productId">Product ID:</label>
+        <input type="number" id="productId" name="productId">
+        <br><br>
+        <button type="submit">Delete</button>
+    </form>
+    <br><br>
+    <div>
+        <div th:if="${param.sucess}">Product deleted!</div>
+    </div>
+    <div>
+        <div th:if="${param.fail}">Product couldn't be deleted!</div>
+    </div>
+</div>
+</body>
+</html>

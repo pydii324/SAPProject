@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Create Products:</h1>
+    <form id="fileUploadForm" action="/admin/create_product" method="post" enctype="multipart/form-data">
+        <label for="title">Product Name:</label>
+        <input type="text" id="title" name="title"><br><br>
+        <label for="description">Product Description:</label>
+        <input type="text" id="description" name="description"><br><br>
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price"><br><br>
+        <label for="availableQuantity">Quantity:</label>
+        <input type="number" id="availableQuantity" name="availableQuantity"><br><br>
+        <input type="file" name="image"/>
+        <button type="submit">Upload</button>
+    </form>
+</div>
+</body>
+</html>

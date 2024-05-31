@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 100px auto;
+            padding: 40px 40px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #333;
+            font-size: 35px;
+        }
+
+        a {
+            display: block;
+            color: #007bff;
+            text-decoration: none;
+            margin-bottom: 10px;
+            font-size: 20px;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Hello admin</h1>
+    <a th:href="@{/admin/create_product}">Create product</a>
+    <a th:href="@{/products}">All Products</a>
+    <a th:href="@{/admin/modifyProduct}">Modify Products</a>
+    <a th:href="@{/admin/deleteProduct}">Delete Product</a>
+    <br>
+    <a th:href="@{/admin/users}">All Customers</a>
+    <br>
+    <a th:href="@{/admin/all_orders}">All orders</a>
+    <a th:href="@{/admin/modifyOrder}">Modify Order</a>
+    <br>
+    <a th:href="@{/admin/create_admin}">Create Admin</a>
+    <a th:href="@{/admin/remove_admin}">Remove Admin</a>
+    <br>
+    <a th:href="@{/admin/start_sale}">Start Sale</a>
+    <a th:href="@{/admin/end_sale}">Stop Sale</a>
+    <a th:href="@{/admin/add_product_in_sale}">Add Product in Sale</a>
+    <a th:href="@{/admin/remove_product_from_sale}">Remove Product From Sale</a>
+</div>
+
+</body>
+</html>
